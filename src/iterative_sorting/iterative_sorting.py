@@ -32,12 +32,17 @@ def selection_sort(arr):
 
 def bubble_sort(arr):
 
+    was_sorted = False
+
     for i in arr:
         if i is not 0 and arr[i] < arr[i - 1]:
             temp = arr[i]
             arr[i] = arr[i-1]
             arr[i-1] = temp
-            bubble_sort(arr)
+            was_sorted = True
+
+    if was_sorted == True:
+        bubble_sort(arr)
 
     return arr
 
