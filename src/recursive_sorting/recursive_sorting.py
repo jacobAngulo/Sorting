@@ -23,17 +23,35 @@ def merge(arrA, arrB):
     return merged_arr
 
 
-print(merge([1, 1, 2, 4, 5, 6, 7, 8], [2, 3, 4, 4, 6, 7]))
-
-# TO-DO: implement the Merge Sort function below USING RECURSION
-
-
 def merge_sort(arr):
     # TO-DO
     if len(arr) <= 1:
         return arr
 
-    return arr
+    global merge
+    left_sorted = False
+    right_sorted = False
+    mid_point = int(len(arr)/2)
+    left_side = arr[:mid_point]
+    right_side = arr[mid_point:]
+    if len(right_side) <= 1:
+        right_sorted = True
+    if len(left_side) <= 1:
+        left_sorted = True
+    if left_sorted == True and right_sorted == True:
+        return merge(left_side, right_side)
+    elif left_sorted == True and right_sorted is not True:
+        right_side = merge_sort(right_side)
+        return merge(left_side, right_side)
+    elif right_sorted == True and left_sorted is not True:
+        left_side = merge_sort(left_side)
+        return merge(left_side, right_side)
+    elif right_sorted == False and left_sorted == False:
+        right_side = merge_sort(right_side)
+        left_side = merge_sort(left_side)
+        return merge(left_side, right_side)
+
+    return merge(left_side, right_side)
 
 
 # STRETCH: implement an in-place merge sort algorithm
