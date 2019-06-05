@@ -34,15 +34,29 @@ def bubble_sort(arr):
 
     was_sorted = False
 
-    for i in arr:
+    # for i in range(len(arr)):
+    #     if i is not 0 and arr[i] < arr[i - 1]:
+    #         temp = arr[i]
+    #         arr[i] = arr[i-1]
+    #         arr[i-1] = temp
+    #         was_sorted = True
+    #     if was_sorted == True:
+    #         i = 0
+
+    i = 0
+    while i < len(arr):
+        was_sorted = False
         if i is not 0 and arr[i] < arr[i - 1]:
             temp = arr[i]
             arr[i] = arr[i-1]
             arr[i-1] = temp
             was_sorted = True
 
-    if was_sorted == True:
-        bubble_sort(arr)
+        if was_sorted == True:
+            bubble_sort(arr)
+            if was_sorted == True:
+                i = 0
+        i += 1
 
     return arr
 
